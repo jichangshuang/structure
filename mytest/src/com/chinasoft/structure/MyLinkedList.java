@@ -1,5 +1,9 @@
 package com.chinasoft.structure;
 
+/**
+ * 单链表常见操作
+ *
+ */
 public class MyLinkedList {
 
     private ListNode head;
@@ -27,17 +31,42 @@ public class MyLinkedList {
     }
 
     public void deleteHead() {
-
+        head = head.next;
     }
 
-    public void deleteNth() {
+    public void deleteNth(int position) {
+        if (position == 0) {
+            deleteHead();
+        } else {
+            ListNode cur = head;
+            for (int i = 1 ; i < position; i++) {
+                cur = cur.next;
+            }
+            cur.next = cur.next.next;
+        }
+    }
 
+    public void find (int data) {
+        ListNode cur = head;
+        while (cur != null) {
+            if (cur.value == data) {
+                break;
+            }
+            cur = cur.next;
+        }
     }
 
     public void print() {
-
+        ListNode cur = head;
+        while (cur != null) {
+            System.out.println(cur.value);
+            cur = cur.next;
+        }
     }
 
+    public static void main(String[] args) {
+
+    }
 
 }
 
