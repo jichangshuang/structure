@@ -21,7 +21,7 @@ public class MyLinkedList {
                 cur = cur.next;
             }
             ListNode newNode = new ListNode(data);
-            newNode.next = cur.next.next;
+            newNode.next = cur.next;
             cur.next = newNode;
         }
     }
