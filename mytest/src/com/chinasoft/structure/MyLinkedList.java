@@ -15,14 +15,15 @@ public class MyLinkedList {
     public void insertNth(int data, int position) {  //  插入链表的中间
         if (position == 0) {
             insertHead(data);
+        } else {
+            ListNode node = head;
+            for (int i = 0; i < position; i++) {
+                node = node.next;
+            }
+            ListNode newNode = new ListNode(data);
+            newNode.next = node.next.next;
+            node.next = newNode;
         }
-        ListNode node = head;
-        for (int i = 0; i < position; i++) {
-            node = node.next;
-        }
-        ListNode newNode = new ListNode(data);
-        newNode.next = node.next.next;
-        node.next = newNode;
     }
 
     public void deleteHead() {
