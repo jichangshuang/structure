@@ -16,13 +16,13 @@ public class MyLinkedList {
         if (position == 0) {
             insertHead(data);
         } else {
-            ListNode node = head;
-            for (int i = 0; i < position; i++) {
-                node = node.next;
+            ListNode cur = head;
+            for (int i = 1; i < position; i++) {
+                cur = cur.next;
             }
             ListNode newNode = new ListNode(data);
-            newNode.next = node.next.next;
-            node.next = newNode;
+            newNode.next = cur.next.next;
+            cur.next = newNode;
         }
     }
 
