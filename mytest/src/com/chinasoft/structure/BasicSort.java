@@ -67,6 +67,7 @@ public class BasicSort {
 
     /**
      * 归并排序
+     *
      * @param arr
      * @param left
      * @param right
@@ -80,6 +81,14 @@ public class BasicSort {
         }
     }
 
+    /**
+     * 归并
+     *
+     * @param arr
+     * @param left
+     * @param mid
+     * @param right
+     */
     public static void merge(int arr[], int left, int mid, int right) {
         int temp[] = new int[arr.length];
 
@@ -112,27 +121,72 @@ public class BasicSort {
         }
     }
 
-    public static void quickSort(){
+    /**
+     * 快速排序
+     *
+     * @param data
+     * @param left
+     * @param right
+     */
+    public static void quickSort(int data[], int left, int right) {
 
+        int base = data[left];// 基准数
+        int ll = left; //表示是从左边找的位置
+        int rr = right;// 表示是从右边找的位置
+
+        while (ll < rr) {
+            // 从后面找比基准数小的数字
+            while (ll < rr && data[rr] >= base) {
+                rr--;
+            }
+            if (ll < rr) {
+                data[rr] = data[rr] ^ data[ll];
+                data[ll] = data[rr] ^ data[ll];
+                data[rr] = data[rr] ^ data[ll];
+                ll++;
+            }
+
+            // 从前面找比基准数大的数字
+            while (ll < rr && data[ll] <= base) {
+                ll++;
+            }
+            if (ll < rr) {
+                data[rr] = data[rr] ^ data[ll];
+                data[ll] = data[rr] ^ data[ll];
+                data[rr] = data[rr] ^ data[ll];
+                rr--;
+            }
+        }
+
+        if (left < ll) {
+            quickSort(data, left, ll - 1);
+        }
+        if (right > ll) {
+            quickSort(data, ll + 1, right);
+        }
     }
 
 
     public static void main(String[] args) {
         int arr1[] = {7, 8, 9, 3, 0, 2, 1};
         insertSort(arr1);
-        System.out.println(Arrays.toString(arr1));
+        System.out.println("插入排序:" + Arrays.toString(arr1));
 
         int arr2[] = {7, 8, 9, 3, 0, 2, 1};
         chooseSort(arr2);
-        System.out.println(Arrays.toString(arr2));
+        System.out.println("选择排序:" + Arrays.toString(arr2));
 
         int arr3[] = {7, 8, 9, 3, 0, 2, 1};
         bubbleSort(arr3);
-        System.out.println(Arrays.toString(arr3));
+        System.out.println("冒泡排序:" + Arrays.toString(arr3));
 
         int arr4[] = {7, 8, 9, 3, 0, 2, 1};
         mergeSort(arr4, 0, arr4.length - 1);
-        System.out.println(Arrays.toString(arr4));
+        System.out.println("归并排序:" + Arrays.toString(arr4));
+
+        int arr5[] = {7, 8, 9, 3, 0, 2, 1};
+        quickSort(arr5, 0, arr5.length - 1);
+        System.out.println("快速排序:" + Arrays.toString(arr5));
     }
 
 
