@@ -1,5 +1,8 @@
 package com.chinasoft.structure;
 
+/**
+ * 背包问题   状态转移方程
+ */
 public class Dp {
 
     public static void main(String[] args) {
