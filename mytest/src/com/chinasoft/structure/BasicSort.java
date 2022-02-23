@@ -131,6 +131,7 @@ public class BasicSort {
     public static void quickSort(int data[], int left, int right) {
 
         int base = data[left];// 基准数
+
         int ll = left; //表示是从左边找的位置
         int rr = right;// 表示是从右边找的位置
 
